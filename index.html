@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="static/index.css">
+    <script src="add_contact.js"></script>
+    <script src="display_contacts.js"></script>
+    <script src="delete_contact.js"></script>
+    <title>Contacts</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box1">
+            <h3>Add new contact</h3>
+            <form id="contact_form">
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="Tomas"><br>
+                    <h6 class="form_error" id="fname_error"></h6>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="Tomilinas"><br>
+                    <h6 class="form_error" id="lname_error"></h6>
+                <label for="fdate">Date of birth: dd-mm-yyyy</label><br>
+                <input type="text" id="bdate" name="bdate" value="15-05-1967"><br>
+                    <h6 class="form_error" id="bdate_error"></h6>
+                <label for="pnumber">Phone number:</label><br>
+                <input type="text" id="pnumber" name="pnumber" value="3705644"><br>
+                    <h6 class="form_error" id="pnumber_error"></h6>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email" value="tomas@gmail.com"><br>
+                    <h6 class="form_error" id="email_error"></h6>
+                <label for="faddr">Address:</label><br>
+                <input type="text" id="faddr" name="faddr" value="Ievu g.1"><br><br />
+                    <h6 class="form_error" id="faddr_error"></h6>
+                <button type="submit">Submit form</button><br>
+                    <h6 id="unique_validation"></h6>
+            </form>
+        </div>
+
+        <div class="box2">
+            <h3>Contacts list</h3>
+            <ol class="contacts_list" id="Conlist">
+
+            </ol>
+        </div>
+    </div>
+
+</body>
+
+</html>
