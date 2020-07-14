@@ -123,6 +123,13 @@ window.addEventListener("load", function () {
       return true;
   }
 
+  function updateDiv(number, email, fname, lname, bdate, addr) {
+    let list_item = document.getElementById(data.Email);
+    list_item.setAttribute("id", email);
+    list_item.innerHTML = "<p>" + number + " " + email + "</p><br>" +
+      "<p>Name: " + fname + " " + lname + " Date: " + bdate + " Address: " + addr +
+      "</p> <button class='edit_btn' id="+number+">EDIT</button> <button class='delete_btn' id="+number+">DELETE</button>";
+    }
 
   function validateForm(event) {
     let fname = document.getElementById('Ufname').value; let ferror = document.getElementById('Ufname_error');
@@ -136,22 +143,23 @@ window.addEventListener("load", function () {
 
     if (namesValid(fname, ferror) && namesValid(lname, lerror) && bdateValid(bdate) && pnumberValid(pnumber) && emailValid(email)) {
       let storedContacts = JSON.parse(localStorage.getItem('contacts'))
+
       if (emailUnique(storedContacts, email) && phoneUnique(storedContacts, pnumber)) {
         storedContacts.forEach(elem => {
           if (elem.PhoneNumber === data.PhoneNumber) {
             elem.FirstName = fname;
-            elem.LastName=lname;
-            elem.BirthDate=bdate;
-            elem.PhoneNumber=pnumber;
-            elem.Email=  email;
+            elem.LastName = lname;
+            elem.BirthDate = bdate;
+            elem.PhoneNumber = pnumber;
+            elem.Email = email;
             elem.Address = faddr;
           }
-          console.log(storedContacts)
           localStorage.setItem('contacts', JSON.stringify(storedContacts));
           modal.style.display = "none";
         });
       }
     }
+    updateDiv(pnumber, email,  fname, lname, bdate, faddr)
     event.preventDefault();
   }
 
@@ -177,10 +185,12 @@ window.addEventListener("load", function () {
   var contact_id = null;
   var data = null;
 
-  let editButtons = document.getElementsByClassName("edit_btn");
-  Array.from(editButtons).forEach(function (elem) {
+  //timer function
+  window.setInterval(function(){ 
+    let editButtons = document.getElementsByClassName("edit_btn");
+    Array.from(editButtons).forEach(function (elem) {
     elem.addEventListener('click', editContact);
-  });
-
+    });
+  }, 3000);
 
 });

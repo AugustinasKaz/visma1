@@ -2,8 +2,8 @@ window.addEventListener("load", function () {
 
     function namesValid(data, error) {
         const error_msg = error;
-        if (data.length === 0) {
-            error_msg.textContent = "Error: field is required";
+        if (data.length === 0 || data.length >= 15) {
+            error_msg.textContent = "Error: field is required and can not exceed 15 characters";
             return false;
         }
         else if (!/^[a-z]+$/i.test(data)) {
